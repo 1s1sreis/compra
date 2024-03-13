@@ -1,0 +1,50 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class VendaDeDoces {
+    private JFrame frame;
+    private JTextField textField;
+    private JButton btnPedir;
+    private double total = 0.0;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    VendaDeDoces window = new VendaDeDoces();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public VendaDeDoces() {
+        initialize();
+    }
+
+    private void initialize() {
+        frame = new JFrame();
+        frame.setBounds(100, 100, 450, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+
+        textField = new JTextField();
+        textField.setBounds(50, 50, 200, 30);
+        frame.getContentPane().add(textField);
+        textField.setColumns(10);
+
+        btnPedir = new JButton("Pedir");
+        btnPedir.setBounds(50, 100, 200, 30);
+        frame.getContentPane().add(btnPedir);
+
+        btnPedir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                total += 5.0; // Adicione o preço do doce aqui
+                textField.setText("Total: " + total);
+            }
+        });
+    }
+}
